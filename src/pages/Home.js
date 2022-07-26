@@ -1,8 +1,12 @@
 import React from 'react'
 
+import Layout from '../shared/Layout'
+
 function Home() {
   return (
-    <div>Home</div>
+    <Layout>
+        <div>this is home</div>
+    </Layout>
   )
 }
 

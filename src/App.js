@@ -1,7 +1,20 @@
+import React from 'react'
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+//pages
+import Home from './pages/Home';
+
+
+
 
 function App() {
   return (
-    <div>store</div>
+    <BrowserRouter >
+      <Routes>
+        <Route exact path='/' element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
