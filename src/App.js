@@ -1,18 +1,25 @@
-import React from 'react'
-
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React from "react";
 
 //pages
-import Home from './pages/Home';
 
-
-
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import { routing } from "./routing/routing";
 
 function App() {
   return (
-    <BrowserRouter >
+    <BrowserRouter>
       <Routes>
-        <Route exact path='/' element={<Home />} />
+        {routing.map((route, index, ...rest) => {
+          return (
+            <Route
+              key={index}
+              path={route.path}
+              element={<route.component />}
+              {...rest}
+            />
+          );
+        })}
       </Routes>
     </BrowserRouter>
   );
