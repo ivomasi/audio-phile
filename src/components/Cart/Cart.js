@@ -2,6 +2,9 @@ import React from "react";
 
 import styled from "styled-components";
 
+import colors from "../../styled-system/colors";
+
+
 function Cart() {
 	return (
 		<Cartis>
@@ -24,7 +27,7 @@ const Cartis = styled.button`
 
 	span {
 		position: absolute;
-		background-color: red;
+		background-color: ${colors.secondaryColor};
 		top: 0;
 		right: 0;
 		border-radius: 50%;
@@ -33,8 +36,13 @@ const Cartis = styled.button`
 		justify-content: center;
 		display: flex;
 		align-items: center;
-		color: white;
+		color: ${colors.white};
 	}
+
+    img {
+        width: 3rem;
+        height: 3rem;
+    }
 `;
 
 export default Cart;
