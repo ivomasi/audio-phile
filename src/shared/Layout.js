@@ -1,20 +1,13 @@
-import React from 'react'
+import React from "react";
+import Navbar from "../components/Navbar/Navbar";
 
-import Box from '@mui/material/Box';
-
-function Layout({children}) {
-  return (
-    <Box sx={layoutStyles}>
-        {children}
-    </Box>
-  )
+function Layout({ children }) {
+	return (
+		<div>
+			<Navbar />
+			{children}
+		</div>
+	);
 }
 
-const layoutStyles = {
-    display: "flex",
-    minHeight: "100vh",
-    minWidth: "100vw",
-
-}
-
-export default Layout
+export default Layout;
