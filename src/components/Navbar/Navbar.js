@@ -31,11 +31,9 @@ function Navbar() {
 			{searchOpen && <SearchBar />}
 			<div className="nav-segment">
 				{routing.map((route, i) => {
-					return (
-						<Link key={i} to={route.path}>
-							{route.name}
-						</Link>
-					);
+					return route.name !== "home" && <Link key={i} to={route.path}>
+					{route.name}
+				</Link>
 				})}
 			</div>
 		</Navigation>
