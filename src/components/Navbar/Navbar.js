@@ -12,6 +12,7 @@ import { routing } from "../../routing/routing";
 import Logo from "../Logo/Logo";
 import SearchBar from "../SearchBar/SearchBar";
 import CartIcon from "../CartIcon/CartIcon";
+import {ReactComponent as Glass} from "../../assets/magnifying-glass.svg"
 
 function Navbar() {
 
@@ -25,7 +26,7 @@ function Navbar() {
 		<Navigation>
 			<div className="nav-segment">
 				<Logo />
-				{window.innerWidth > 809 ? <SearchBar /> : <button className="search-icon" onClick={handleOpenSearch}>&#128269;</button>}
+				{window.innerWidth > 809 ? <SearchBar /> : <Glass className="search-icon" onClick={handleOpenSearch}>&#128269;</Glass>}
 				<CartIcon />
 			</div>
 			{searchOpen && <SearchBar />}
@@ -57,12 +58,13 @@ const Navigation = styled.nav`
 		align-items: center;
 
 		.search-icon {
-			width: 3rem;
-			height: 3rem;
+			width: 2.5rem;
+			height: 2.5rem;
 			border: none;
 			font-size: 2rem;
 			background-color: transparent;
 			cursor: pointer;
+			margin-left: 5rem;
 		}
 	}
 
