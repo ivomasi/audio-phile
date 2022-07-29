@@ -10,7 +10,7 @@ import { routing } from "../../routing/routing.js";
 //comps
 import { StyledInput as Input } from "../../shared/Input/Input";
 import colors from "../../styled-system/colors.js";
-import Button from "../Button.js/Button";
+import Button from "../Button/Button";
 
 
 function SearchBar() {

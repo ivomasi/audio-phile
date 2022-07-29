@@ -28,6 +28,7 @@ const Btn = styled.button`
     color: ${colors.white};
     text-transform: capitalize;
     font-weight: 600;
+	cursor: pointer;
     background-color: ${(props) => props.primary ? colors.primaryColor : colors.secondaryColor};
 `;
 

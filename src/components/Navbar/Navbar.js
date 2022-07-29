@@ -39,7 +39,7 @@ const Navigation = styled.nav`
 	width: 100%;
 	display: flex;
   flex-direction: column;
-  border-bottom: 1px solid ${colors.dark};
+  border-bottom: 1px solid ${colors.lightGrey};
   text-transform: capitalize;
   background-color: ${colors.white};
 
@@ -58,7 +58,7 @@ const Navigation = styled.nav`
   }
 
   .nav-segment:not(:first-child) {
-	min-height: 3rem;
+	min-height: 5rem;
   }
 
   a {
