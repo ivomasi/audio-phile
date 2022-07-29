@@ -12,44 +12,48 @@ import { StyledInput as Input } from "../../shared/Input/Input";
 import colors from "../../styled-system/colors.js";
 import Button from "../Button.js/Button";
 
+
 function SearchBar() {
-	const [selectValue, setSelectValue] = useState("");
-	const [searchTextField, setSearchTextField] = useState("")
+	const [selectValue, setSelectValue] = useState("all");
+	const [searchTextField, setSearchTextField] = useState("");
+
+
 
 	const handleCatChange = (e) => {
 		const selectedOption = e.target.value;
 
-		setSelectValue(selectedOption)
+		setSelectValue(selectedOption);
 	};
 
 	const handleTextChange = (e) => {
-		const text = e.target.value
-		setSearchTextField(text)
-	}
+		const text = e.target.value;
+		setSearchTextField(text.trim());
+	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
 		const query = {
 			category: selectValue,
-			search: searchTextField
-		}
+			search: searchTextField,
+		};
 
-		console.log(query)
+		console.log(query);
 	};
 
 	return (
 		<Search onSubmit={handleSubmit}>
-			<SearchText type="text" placeholder="search..." onChange={handleTextChange}></SearchText>
+			<SearchText type="text" placeholder="search..." onChange={handleTextChange} required></SearchText>
 			<SearchCat name="categories" value={selectValue} onChange={handleCatChange}>
+				<option value="all">all categories</option>
 				{routing.map((route, i) => {
 					return (
 						<option key={i} value={route.name}>
-							{route.name}
+						{route.name}
 						</option>
-					);
-				})}
-			</SearchCat>
+						);
+					})}
+				</SearchCat>
 			<Button type="submit" text="search" primary size="lg" />
 		</Search>
 	);
@@ -66,6 +70,8 @@ const SearchText = styled(Input)`
 	flex-basis: 60%;
 	height: 100%;
 `;
+
+
 
 const SearchCat = styled.select`
 	flex-basis: 25%;
