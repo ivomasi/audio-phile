@@ -5,9 +5,9 @@ import colors from "../../styled-system/colors.js";
 import {flexCenter} from "../../shared/styles/common.js"
 
 
-function Button({ type = "button", text, onClick, size="m", primary = false }) {
+function Button({ type = "button", text, onClick, size="m", primary = false, rounded = false }) {
 	return (
-		<Btn type={type} onClick={onClick} size={size} primary={primary} >
+		<Btn type={type} onClick={onClick} size={size} primary={primary} rounded={rounded}>
 			{text}
 		</Btn>
 	);
@@ -23,6 +23,7 @@ const Btn = styled.button`
 	${flexCenter}
 	height: ${(props) => BUTTON_SIZE[props.size]};
 	line-height: ${(props) => BUTTON_SIZE[props.size]};
+	border-radius: ${(props) => props.rounded ? "5px" : "0"};
 	padding: 1rem 2rem;
     border: none;
     color: ${colors.white};
