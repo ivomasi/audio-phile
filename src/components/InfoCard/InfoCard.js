@@ -38,7 +38,6 @@ const Card = styled.div`
         align-items: center;
         justify-content: center;
         flex-basis: 100%;
-        text-align: center;
     }
 
     .sector:not(:first-child) {

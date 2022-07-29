@@ -25,8 +25,9 @@ function Home() {
 				<Offer imageUrl={"https://cdn.shopify.com/s/files/1/1791/0383/files/Audeze_MM-500_Lifestyle_Banner.jpg?v=1654277762"}>
 					<h2>nazov produktu</h2>
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-					<Button type="button" text="pre-order now" size="lg" primary onClick={handlePreorder} />
+					<Button type="button" text="pre-order now" size="lg" primary rounded onClick={handlePreorder} />
 				</Offer>
+        <h2>Shop the World’s Best Selection of Premium Headphones.</h2>
 				<Benefits>
           <InfoCard IconComponent={<ReturnPolicy />} text="Our unparalleled 365-day return policy* gives you lots of time to fall in love with your new gear." title="LOVE AT FIRST (OR SECOND) LISTEN"/>
           <InfoCard IconComponent={<BestPrice />} text="Find it cheaper elsewhere? We will match any price from an authorized dealer." title="BEST PRICE ON PREMIUM HEADPHONES, GUARANTEED"/>
@@ -45,6 +46,9 @@ const Content = styled.div`
   flex-direction: column;
   padding: 2rem ;
   row-gap: 2rem;
+  text-align: center;
+
+  
 `;
 
 const Offer = styled.div`
