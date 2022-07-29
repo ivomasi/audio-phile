@@ -3,6 +3,8 @@ import React, { useState } from "react";
 //css
 import styled from "styled-components";
 import { flexCenter } from "../../shared/styles/common.js";
+import breakpoints from "../../shared/styles/breakpoints"
+
 
 //routing for search catergory names
 import { routing } from "../../routing/routing.js";
@@ -44,7 +46,7 @@ function SearchBar() {
 	return (
 		<Search onSubmit={handleSubmit}>
 			<SearchText type="text" placeholder="search..." onChange={handleTextChange} required></SearchText>
-			<SearchCat name="categories" value={selectValue} onChange={handleCatChange}>
+			{window.innerWidth > 809 && <SearchCat name="categories" value={selectValue} onChange={handleCatChange}>
 				<option value="all">all categories</option>
 				{routing.map((route, i) => {
 					return (
@@ -53,7 +55,7 @@ function SearchBar() {
 						</option>
 						);
 					})}
-				</SearchCat>
+				</SearchCat>}
 			<Button type="submit" text="search" primary size="lg" />
 		</Search>
 	);
@@ -64,6 +66,7 @@ const Search = styled.form`
 	border-radius: 0.5rem;
 	overflow: hidden;
 	height: 3rem;
+
 `;
 
 const SearchText = styled(Input)`
