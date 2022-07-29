@@ -42,6 +42,7 @@ const Navigation = styled.nav`
   border-bottom: 1px solid ${colors.dark};
   padding: 2rem ;
   text-transform: capitalize;
+  background-color: ${colors.lightGrey};
 
   .nav-segment {
     width: 100%;
