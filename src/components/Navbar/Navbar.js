@@ -40,14 +40,25 @@ const Navigation = styled.nav`
 	display: flex;
   flex-direction: column;
   border-bottom: 1px solid ${colors.dark};
-  padding: 2rem ;
   text-transform: capitalize;
-  background-color: ${colors.lightGrey};
+  background-color: ${colors.white};
 
   .nav-segment {
     width: 100%;
 	  display: flex;
     justify-content: space-around;
+	background-color: ${colors.white};
+	justify-content: space-around;
+	align-items: center;
+
+  }
+
+  .nav-segment:first-child {
+	background-color: ${colors.lightGrey};
+  }
+
+  .nav-segment:not(:first-child) {
+	min-height: 3rem;
   }
 
   a {
@@ -55,7 +66,7 @@ const Navigation = styled.nav`
     color: ${colors.dark};
 
     :hover {
-      text-decoration: underline;
+	  color: ${colors.primaryColor}
     }
   }
 `;
