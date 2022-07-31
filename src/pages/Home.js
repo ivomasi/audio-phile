@@ -31,7 +31,7 @@ function Home() {
 				<h2>Shop the World’s Best Selection of Premium Headphones.</h2>
 				<Benefits>
 					{homePage.map(({ img, text, title }, index) => {
-						return <InfoCard key={index} IconComponent={<Svg url={img} alt={title} size="l"/>} text={text} title={title} />;
+						return <InfoCard key={index} IconComponent={<Svg url={img} alt={title} size="lg"/>} text={text} title={title} />;
 					})}
 				</Benefits>
 			</Content>
@@ -60,6 +60,7 @@ const Offer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	position: relative;
 	align-items: flex-start;
 	color: ${colors.white};
 
@@ -69,6 +70,16 @@ const Offer = styled.div`
 
 	p {
 		margin: 0 0 2rem 0;
+	}
+
+	${between("md", "xl")} {
+    		grid-template-columns: 1fr 1fr;
+
+	}
+	${down("md")} {
+		justify-content: space-around;
+	align-items: center;
+
 	}
 `;
 
