@@ -10,7 +10,7 @@ import { routing } from "./routing/routing";
 function App() {
 	return (
 		<>
-				<GlobalStyle />
+			<GlobalStyle />
 			<BrowserRouter>
 				<Routes>
 					{routing.map((route, index, ...rest) => {
