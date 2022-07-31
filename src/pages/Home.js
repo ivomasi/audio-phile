@@ -1,6 +1,5 @@
 import React from "react";
 
-
 //css
 import styled from "styled-components";
 //comps
@@ -10,18 +9,15 @@ import colors from "../styled-system/colors";
 import InfoCard from "../components/InfoCard/InfoCard";
 
 //svg icons
-import Svg from "../components/Svg/Svg"
-import svgImages from "../assets"
+import Svg from "../components/Svg/Svg";
+import svgImages from "../assets";
 
 function Home() {
 	const handlePreorder = (e) => {
 		console.log("Preorder");
 	};
 
-const {homePage}  = svgImages
-
-
-
+	const { homePage } = svgImages;
 
 	return (
 		<Layout>
@@ -31,11 +27,10 @@ const {homePage}  = svgImages
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 					<Button type="button" text="pre-order now" size="lg" primary rounded onClick={handlePreorder} />
 				</Offer>
-        <h2>Shop the World’s Best Selection of Premium Headphones.</h2>
+				<h2>Shop the World’s Best Selection of Premium Headphones.</h2>
 				<Benefits>
-
-					{homePage.map(({img, text, title}, index) => {
-						return <InfoCard key={index} IconComponent={<Svg url={img} alt={title} />}  text={text} title={title}/>
+					{homePage.map(({ img, text, title }, index) => {
+						return <InfoCard key={index} IconComponent={<Svg url={img} alt={title} size="l"/>} text={text} title={title} />;
 					})}
 				</Benefits>
 			</Content>
@@ -45,14 +40,12 @@ const {homePage}  = svgImages
 
 const Content = styled.div`
 	display: flex;
-  flex-grow: 1;
-  flex-basis: 1;
-  flex-direction: column;
-  padding: 2rem ;
-  row-gap: 2rem;
-  text-align: center;
-
-  
+	flex-grow: 1;
+	flex-basis: 1;
+	flex-direction: column;
+	padding: 2rem;
+	row-gap: 2rem;
+	text-align: center;
 `;
 
 const Offer = styled.div`
@@ -61,7 +54,7 @@ const Offer = styled.div`
 	background-repeat: no-repeat;
 	background-size: cover;
 	padding: 5rem 3rem;
-  min-height: 70vh;
+	min-height: 70vh;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -69,22 +62,19 @@ const Offer = styled.div`
 	align-items: flex-start;
 	color: ${colors.white};
 
-  h2 {
-    margin: 1rem 0;
-  }
+	h2 {
+		margin: 1rem 0;
+	}
 
-  p {
-    margin: 0 0 2rem 0;
-  }
+	p {
+		margin: 0 0 2rem 0;
+	}
 `;
 
 const Benefits = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: .5rem;
-
-  
-
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 0.5rem;
 `;
 
 export default Home;
