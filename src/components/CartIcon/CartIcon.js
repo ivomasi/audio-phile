@@ -5,7 +5,7 @@ import styled from "styled-components";
 import colors from "../../styled-system/colors";
 
 
-function Cart() {
+function CartIcon() {
 	return (
 		<Cartis>
 			<img src="/img/cart-icon.png"></img>
@@ -45,4 +45,4 @@ const Cartis = styled.button`
     }
 `;
 
-export default Cart;
+export default CartIcon;

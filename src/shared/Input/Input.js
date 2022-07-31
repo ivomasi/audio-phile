@@ -12,6 +12,8 @@ export const StyledInput = styled.input`
     height: 2rem;
 	line-height: 2rem;
 	padding: 1rem 2rem;
+	border: none;
+	
 
     :focus {
 		outline: none;

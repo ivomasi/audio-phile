@@ -1,3 +1,7 @@
 import Home from "../pages/Home";
 
-export const routing = [{ path: "/", component: Home, exact: true }];
+import Headphones from "../pages/Headphones";
+import MixPults from "../pages/MixPults";
+import Speakers from "../pages/Speakers";
+
+export const routing = [{ name: "home", path: "/", component: Home, exact: true }, { name: "headphones", path: "/headphones", component: Headphones},{ name: "speakers", path: "/speakers", component: Speakers},{ name: "mix pults", path: "/mix-pults", component: MixPults}];

@@ -1,46 +1,90 @@
-import React from "react";
+import React, { useState } from "react";
 
+//css
 import styled from "styled-components";
+import { flexCenter } from "../../shared/styles/common.js";
+import breakpoints from "../../shared/styles/breakpoints"
 
-import { StyledInput } from "../../shared/Input/Input";
-import { FlexCenter } from "../../shared/styles/Common";
+
+//routing for search catergory names
+import { routing } from "../../routing/routing.js";
+
+//comps
+import { StyledInput as Input } from "../../shared/Input/Input";
+import colors from "../../styled-system/colors.js";
+import Button from "../Button/Button";
+
 
 function SearchBar() {
+	const [selectValue, setSelectValue] = useState("all");
+	const [searchTextField, setSearchTextField] = useState("");
+
+
+
+	const handleCatChange = (e) => {
+		const selectedOption = e.target.value;
+
+		setSelectValue(selectedOption);
+	};
+
+	const handleTextChange = (e) => {
+		const text = e.target.value;
+		setSearchTextField(text.trim());
+	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		console.log(e);
+		const query = {
+			category: selectValue,
+			search: searchTextField,
+		};
+
+		console.log(query);
 	};
 
 	return (
 		<Search onSubmit={handleSubmit}>
-			<SearchText type="text" placeholder="search"></SearchText>
-			<SearchCat></SearchCat>
-			<SubmitSearch type="submit">Search</SubmitSearch>
+			<SearchText type="text" placeholder="search..." onChange={handleTextChange} required></SearchText>
+			{window.innerWidth > 809 && <SearchCat name="categories" value={selectValue} onChange={handleCatChange}>
+				<option value="all">all categories</option>
+				{routing.map((route, i) => {
+					return (
+						<option key={i} value={route.name}>
+						{route.name}
+						</option>
+						);
+					})}
+				</SearchCat>}
+			<Button type="submit" text="search" primary size="lg" />
 		</Search>
 	);
 }
 const Search = styled.form`
-	${FlexCenter}
+	${flexCenter}
 	flex-basis: 66%;
+	border-radius: 0.5rem;
+	overflow: hidden;
+	height: 3rem;
+
 `;
 
-const SearchText = styled(StyledInput)`
+const SearchText = styled(Input)`
 	flex-basis: 60%;
+	height: 100%;
 `;
+
+
 
 const SearchCat = styled.select`
 	flex-basis: 25%;
-	height: 2rem;
+	box-sizing: content-box;
+	height: 100%;
 	line-height: 2rem;
-	padding: 1rem 2rem;
-`;
-
-const SubmitSearch = styled.button`
-	${FlexCenter}
-	height: 2rem;
-	line-height: 2rem;
-	padding: 1rem 2rem;
+	padding: 0 1rem;
+	border: none;
+	text-transform: capitalize;
+	border-left: 1px solid ${colors.primaryColor};
 `;
 
 export default SearchBar;
