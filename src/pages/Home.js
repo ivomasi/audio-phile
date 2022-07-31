@@ -23,6 +23,7 @@ function Home() {
 		const setData = async () => {
 
 			const data = await getCollection("headphones");
+			console.log(data)
 			setProducts(data);
 		};
 

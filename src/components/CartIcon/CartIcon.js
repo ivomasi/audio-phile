@@ -8,7 +8,7 @@ import colors from "../../styled-system/colors";
 function CartIcon() {
 	return (
 		<Cartis>
-			<img src="/img/cart-icon.png"></img>
+			<img src="/img/cart-icon.png" alt="cart icon"></img>
 			<span>2</span>
 		</Cartis>
 	);
