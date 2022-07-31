@@ -17,11 +17,12 @@ import svgImages from "../assets";
 import getCollection from "../hooks/getCollection/getCollection";
 
 function Home() {
-	const [products, setProducts] = useState([]);
+	const [products, setProducts] = useState(null);
 
 	useEffect(() => {
 		const setData = async () => {
-			const data = await getCollection("speakers");
+
+			const data = await getCollection("headphones");
 			setProducts(data);
 		};
 
@@ -37,12 +38,11 @@ function Home() {
 	return (
 		<Layout>
 			<Content>
-			<Offer imageUrl={products.length > 0 ? products[0].previewImage : "/img/placeholder-img.png"}>
-					<h2>nazov produktu</h2>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+			<Offer imageUrl={products ? products[0].previewImage : "/img/placeholder-img.png"}>
+					<h2>{products ?`${ products[0].brand} ${products[0].model}` : null}</h2>
+					<p>{products ? products[0].description : null}</p>
 					<Button type="button" text="pre-order now" size="lg" primary rounded onClick={handlePreorder} />
 				</Offer>
-				{console.log(products)}
 				<h2>Shop the World’s Best Selection of Premium Headphones.</h2>
 				<Benefits>
 					{homePage.map(({ img, text, title }, index) => {
@@ -65,7 +65,7 @@ const Content = styled.div`
 `;
 
 const Offer = styled.div`
-	background-image: url(${(props) => props.imageUrl});
+	background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url(${(props) => props.imageUrl});
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -85,6 +85,7 @@ const Offer = styled.div`
 
 	p {
 		margin: 0 0 2rem 0;
+		text-align: left;
 	}
 
 	${between("md", "xl")} {
