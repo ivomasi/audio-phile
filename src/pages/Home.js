@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 //css
 import styled from "styled-components";
-import { down, between } from 'styled-breakpoints';
+import { down, between } from "styled-breakpoints";
 //comps
 import Layout from "../shared/Layout";
 import Button from "../components/Button/Button";
@@ -13,7 +13,21 @@ import InfoCard from "../components/InfoCard/InfoCard";
 import Svg from "../components/Svg/Svg";
 import svgImages from "../assets";
 
+//get data from db
+import getCollection from "../hooks/getCollection/getCollection";
+
 function Home() {
+	const [products, setProducts] = useState([]);
+
+	useEffect(() => {
+		const setData = async () => {
+			const data = await getCollection("speakers");
+			setProducts(data);
+		};
+
+		setData();
+	}, []);
+
 	const handlePreorder = (e) => {
 		console.log("Preorder");
 	};
@@ -23,15 +37,16 @@ function Home() {
 	return (
 		<Layout>
 			<Content>
-				<Offer imageUrl={"https://cdn.shopify.com/s/files/1/1791/0383/files/Audeze_MM-500_Lifestyle_Banner.jpg?v=1654277762"}>
+			<Offer imageUrl={products.length > 0 ? products[0].previewImage : "/img/placeholder-img.png"}>
 					<h2>nazov produktu</h2>
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 					<Button type="button" text="pre-order now" size="lg" primary rounded onClick={handlePreorder} />
 				</Offer>
+				{console.log(products)}
 				<h2>Shop the World’s Best Selection of Premium Headphones.</h2>
 				<Benefits>
 					{homePage.map(({ img, text, title }, index) => {
-						return <InfoCard key={index} IconComponent={<Svg url={img} alt={title} size="lg"/>} text={text} title={title} />;
+						return <InfoCard key={index} IconComponent={<Svg url={img} alt={title} size="lg" />} text={text} title={title} />;
 					})}
 				</Benefits>
 			</Content>
@@ -73,13 +88,11 @@ const Offer = styled.div`
 	}
 
 	${between("md", "xl")} {
-    		grid-template-columns: 1fr 1fr;
-
+		grid-template-columns: 1fr 1fr;
 	}
 	${down("md")} {
 		justify-content: space-around;
-	align-items: center;
-
+		align-items: center;
 	}
 `;
 
@@ -89,14 +102,11 @@ const Benefits = styled.div`
 	grid-gap: 0.5rem;
 
 	${between("md", "xl")} {
-    		grid-template-columns: 1fr 1fr;
-
+		grid-template-columns: 1fr 1fr;
 	}
 	${down("md")} {
-    		grid-template-columns: 1fr;
-
+		grid-template-columns: 1fr;
 	}
-
 `;
 
 export default Home;
