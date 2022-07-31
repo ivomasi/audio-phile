@@ -2,6 +2,7 @@ import React from "react";
 
 //css
 import styled from "styled-components";
+import { down, between } from 'styled-breakpoints';
 //comps
 import Layout from "../shared/Layout";
 import Button from "../components/Button/Button";
@@ -75,6 +76,16 @@ const Benefits = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-gap: 0.5rem;
+
+	${between("md", "xl")} {
+    		grid-template-columns: 1fr 1fr;
+
+	}
+	${down("md")} {
+    		grid-template-columns: 1fr;
+
+	}
+
 `;
 
 export default Home;
