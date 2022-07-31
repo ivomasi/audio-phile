@@ -5,14 +5,16 @@ import styled from "styled-components";
 import colors from "../../styled-system/colors";
 
 //routing
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { routing } from "../../routing/routing";
 
 //comps
 import Logo from "../Logo/Logo";
 import SearchBar from "./SearchBar/SearchBar";
 import CartIcon from "../CartIcon/CartIcon";
-import {ReactComponent as Glass} from "../../assets/magnifying-glass.svg"
+import svgImages from "../../assets";
+import Svg from "../Svg/Svg";
+
 
 function Navbar() {
 
@@ -22,19 +24,26 @@ function Navbar() {
 		setsearchOpen(prevValue => !prevValue)
 	}
 
+	let activeStyle = {
+		textDecoration: "underline",
+		color: colors.primaryColor
+	};
+
 	return (
 		<Navigation>
 			<div className="nav-segment">
 				<Logo />
-				{window.innerWidth > 809 ? <SearchBar /> : <Glass className="search-icon" onClick={handleOpenSearch}>&#128269;</Glass>}
+				{window.innerWidth > 809 ? <SearchBar /> : <Svg className="search-icon" url={svgImages.ui[0]} alt="search-icon" size="sm" onClick={handleOpenSearch}></Svg>}
 				<CartIcon />
 			</div>
 			{searchOpen && <SearchBar />}
 			<div className="nav-segment">
 				{routing.map((route, i) => {
-					return route.name !== "home" && <Link key={i} to={route.path}>
+					return route.name !== "home" && <NavLink key={i}  to={route.path} style={({ isActive }) =>
+					isActive ? activeStyle : undefined
+				  }>
 					{route.name}
-				</Link>
+				</NavLink>
 				})}
 			</div>
 		</Navigation>
@@ -57,15 +66,7 @@ const Navigation = styled.nav`
 		justify-content: space-around;
 		align-items: center;
 
-		.search-icon {
-			width: 2.5rem;
-			height: 2.5rem;
-			border: none;
-			font-size: 2rem;
-			background-color: transparent;
-			cursor: pointer;
-			margin-left: 5rem;
-		}
+	
 	}
 
 	.nav-segment:first-child {
