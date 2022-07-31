@@ -2,17 +2,16 @@ import React, { useState } from "react";
 
 //css
 import styled from "styled-components";
-import { flexCenter } from "../../shared/styles/common.js";
-import breakpoints from "../../shared/styles/breakpoints"
+import { flexCenter } from "../../../shared/styles/common.js";
 
 
 //routing for search catergory names
-import { routing } from "../../routing/routing.js";
+import { routing } from "../../../routing/routing";
 
 //comps
-import { StyledInput as Input } from "../../shared/Input/Input";
-import colors from "../../styled-system/colors.js";
-import Button from "../Button/Button";
+import { StyledInput as Input } from "../../../shared/Input/Input";
+import colors from "../../../styled-system/colors.js";
+import Button from "../../Button/Button";
 
 
 function SearchBar() {

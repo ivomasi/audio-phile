@@ -10,7 +10,7 @@ import { routing } from "../../routing/routing";
 
 //comps
 import Logo from "../Logo/Logo";
-import SearchBar from "../SearchBar/SearchBar";
+import SearchBar from "./SearchBar/SearchBar";
 import CartIcon from "../CartIcon/CartIcon";
 import {ReactComponent as Glass} from "../../assets/magnifying-glass.svg"
 
