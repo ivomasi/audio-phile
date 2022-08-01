@@ -1,26 +1,33 @@
-import React,{useState, useEffect} from 'react'
+import React, { useEffect } from "react";
 
+import { useLocation } from "react-router-dom";
 
-import {useLocation} from "react-router-dom"
+import Layout from "../shared/Layout";
+import ProductCard from "../components/ProductCard/ProductCard";
+import styled from "styled-components";
 
 function Product() {
+	const { state } = useLocation();
 
-  const {state} = useLocation()
+	console.log(state);
+	const { brand, model, stock, sold, price } = state.product;
 
-  console.log(state)
-  const {brand} = state.product
-
-    useEffect(() => {
-
-    },[])
-    
-  
-   
-  return (
-    <div>Product page
-
-    </div>
-  )
+console.log(brand,model)
+	return (
+		<Layout>
+			<ProductLayout>
+				<ProductCard  brand={brand}  sold={sold} price={price} model={model} />
+				<ProductCard  brand={brand}  sold={sold} price={price} model={model}  />
+			</ProductLayout>
+		</Layout>
+	);
 }
 
-export default Product
+const ProductLayout = styled.section`
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  min-height: 100vh;
+
+`;
+
+export default Product;

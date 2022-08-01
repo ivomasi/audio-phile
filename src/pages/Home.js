@@ -46,7 +46,7 @@ function Home() {
 				<h2>Shop the World’s Best Selection of Premium Headphones.</h2>
 				<Benefits>
 					{homePage.map(({ img, text, title }, index) => {
-						return <InfoCard key={index} IconComponent={<Svg url={img} alt={title} size="lg" />} text={text} title={title} />;
+						return <InfoCard key={index} IconComponent={<Svg url={img} alt={title} size="lg" />} text={text} title={title} size />;
 					})}
 				</Benefits>
 			</Content>
