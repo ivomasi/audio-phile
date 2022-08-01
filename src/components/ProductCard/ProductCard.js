@@ -21,20 +21,19 @@ function ProductCard({ model, brand, price, stock, sold }) {
 			{sold > 240 && <span>best seller</span>}
 			<p className="price">{price} €</p>
 			<StockText color={stock >= 10 ? colors.green : stock === 0 ? colors.grey : colors.secondaryColor}>
-				{stock >= 10 ? "In stock" : stock === 0 ? "OUT OF STOCK" : "running out"}
+				{stock >= 10 ? "In stock" : stock === 0 ? "OUT OF STOCK" : "ALMOST OUT"}
 			</StockText>
 			<p>Ships Same Business Day (Monday - Friday)</p>
-			{
-				<Button
-					primary
-					style={{ backgroundColor: stock !== 0 ? null : colors.grey }}
-					rounded
-					text={stock !== 0 ? "add to cart" : "OUT OF STOCK"}
-					size="lg"
-					width="100%"
-					disabled={stock !== 0 ? false : true}
-				/>
-			}
+
+			<Button
+				primary
+				style={{ backgroundColor: stock !== 0 ? null : colors.grey }}
+				rounded
+				text={stock !== 0 ? "add to cart" : "OUT OF STOCK"}
+				size="lg"
+				width="100%"
+				disabled={stock !== 0 ? false : true}
+			/>
 
 			<ShipIcons>
 				{productCard.map(({ img, title }, index) => {

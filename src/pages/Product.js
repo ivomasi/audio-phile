@@ -3,11 +3,11 @@ import React from "react";
 import { useLocation, Navigate } from "react-router-dom";
 
 import Layout from "../shared/Layout";
-import ProductCard from "../components/ProductCard/ProductCard";
-import Carousel from "../components/Carousel/Carousel";
+
 
 import styled from "styled-components";
 import {down} from "styled-breakpoints"
+import ProductView from "../components/ProductView/ProductView";
 
 
 function Product() {
@@ -24,8 +24,8 @@ function Product() {
 	return (
 		<Layout>
 			<ProductLayout>
-				<Carousel images={imagesUrl} />
-				<ProductCard brand={brand} sold={sold} price={price} model={model} />
+				<ProductView  images={imagesUrl} brand={brand} sold={sold} price={price} model={model} />
+				
 			</ProductLayout>
 		</Layout>
 	);
@@ -37,6 +37,7 @@ const ProductLayout = styled.section`
 	padding: 2rem 5rem;
 	gap: 1rem;
 
+	margin-bottom: 100vh;
 	${down("lg")} {
 		flex-direction: column;
 		padding: 1rem;
