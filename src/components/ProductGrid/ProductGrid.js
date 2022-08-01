@@ -2,6 +2,7 @@ import React from "react";
 
 import styled from "styled-components";
 import colors from "../../styled-system/colors";
+import {down} from "styled-breakpoints"
 
 import ProductGridItem from "./ProductGridItem/ProductGridItem";
 
@@ -25,6 +26,12 @@ const Grid = styled.div`
 	grid-template-columns: 1fr 1fr 1fr 1fr;
   width: 80%;
   margin: 0 auto;
+  ${down("md")} {
+	margin-top: 2rem;
+	grid-template-columns: 1fr;
+	grid-gap: 2rem;
+	background-color: transparent;
+  }
 `;
 
 export default ProductGrid;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import {down} from "styled-breakpoints"
 import colors from "../../../styled-system/colors";
 import Button from "../../Button/Button";
 
@@ -36,8 +37,8 @@ function ProductGridItem({ product }) {
 				</ItemBio>
 
 				<ItemAction>
-					<Button text="Add to cart" rounded size="lg" width="100%" />
-					<Button text="Quick view" primary rounded size="lg" width="100%" />
+					<Button text="Add to cart" rounded size="lg" width="100%" primary/>
+					<Button text="Quick view" rounded complementary size="lg" width="100%" />
 				</ItemAction>
 			</ItemWrapper>
 		)
@@ -49,6 +50,7 @@ const ItemWrapper = styled.div`
 	grid-template-rows: 2fr 2fr 1fr;
 	border: 1px solid ${colors.lightGrey};
 	padding: 1rem;
+	background-color: ${colors.white};
 `;
 
 // @TODO change to anchor tag
@@ -58,15 +60,18 @@ const ItemBio = styled.div`
 	justify-content: flex-start;
 	overflow: hidden;
 
+
 	h3 {
 		position: relative;
 		margin: 2rem 0;
+		font-weight: 400;
 
 		span {
 			position: absolute;
 			color: ${colors.darkGrey};
 			text-decoration: line-through;
 			right: 5rem;
+
 		}
 	}
 
@@ -77,6 +82,8 @@ const ItemBio = styled.div`
 		text-overflow: ellipsis;
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
+	font-weight: 400;
+
 	}
 `;
 
