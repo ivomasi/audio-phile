@@ -39,7 +39,7 @@ function Navbar() {
 			{searchOpen && <SearchBar />}
 			<div className="nav-segment">
 				{routing.map((route, i) => {
-					return route.name !== "home" && <NavLink key={i}  to={route.path} style={({ isActive }) =>
+					return (route.name !== "home" && route.name !== "product") && <NavLink key={i}  to={route.path} style={({ isActive }) =>
 					isActive ? activeStyle : undefined
 				  }>
 					{route.name}
