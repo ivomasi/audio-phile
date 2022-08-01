@@ -25,8 +25,9 @@ function Navbar() {
 	}
 
 	let activeStyle = {
-		textDecoration: "underline",
-		color: colors.primaryColor
+		textDecoration: "underline  !important",
+		color: colors.primaryColor + " !important",
+		backgroundColor: "transparent"
 	};
 
 	return (
@@ -41,7 +42,7 @@ function Navbar() {
 				{routing.map((route, i) => {
 					return (route.name !== "home" && route.name !== "product") && <NavLink key={i}  to={route.path} style={({ isActive }) =>
 					isActive ? activeStyle : undefined
-				  }>
+				  } >
 					{route.name}
 				</NavLink>
 				})}
@@ -80,8 +81,9 @@ const Navigation = styled.nav`
 	a {
 		text-decoration: none;
 		color: ${colors.dark};
+		
 
-		:hover {
+		&:hover {
 			color: ${colors.primaryColor};
 		}
 	}

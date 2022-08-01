@@ -15,7 +15,7 @@ import svgImages from "../../assets";
 const { productCard } = svgImages;
 
 
-function ProductCard({ model, brand, price, stock = 12, sold }) {
+function ProductCard({ model, brand, price, stock, sold }) {
 
 
 	return (
@@ -39,13 +39,19 @@ function ProductCard({ model, brand, price, stock = 12, sold }) {
 }
 
 const Card = styled.div`
-	border: 1px solid black;
 	display: flex;
+	border: 1px solid ${colors.grey};
+	background-color: ${colors.white};
 	flex-direction: column;
 	padding: 2rem;
 	justify-content: space-around;
 	align-items: flex-start;
-	min-height: 80vh;
+	max-height: 80vh;
+	flex-basis: 33%;
+
+	${down("md")} {
+		max-height: inherit;
+	}
 
 	span {
 		background-color: ${colors.lightGreen};
@@ -75,9 +81,12 @@ const ShipIcons = styled.div`
 
 	${between("md", "xl")} {
 		grid-template-columns: 1fr 1fr;
+
 	}
 	${down("md")} {
 		grid-template-columns: 1fr;
+	align-self: center;
+
 	}
 `;
 

@@ -24,7 +24,7 @@ function ProductGridItem({ product }) {
 						</h3>
 
 						<p>
-							<b>{product.model}</b>
+							<b>{`${product.brand} ${product.model}`}</b>
 						</p>
 						<p>{product.brand}</p>
 					</ItemBio>
