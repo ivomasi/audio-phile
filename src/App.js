@@ -7,6 +7,9 @@ import GlobalStyle from "./shared/styles/globalStyles";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { routing } from "./routing/routing";
 
+//page
+import NoMatch from "./pages/NoMatch";
+
 function App() {
 	return (
 		<>
@@ -16,6 +19,9 @@ function App() {
 					{routing.map((route, index, ...rest) => {
 						return <Route key={index} path={route.path} element={<route.component />} {...rest} />;
 					})}
+					<Route path="*"  element={<NoMatch />}/>
+						
+					
 				</Routes>
 			</BrowserRouter>
 		</>

@@ -12,4 +12,5 @@ export const routing = [
 	{ name: "mix pults", path: "/mix-pults", component: MixPults },
 	{ name: "product", path: "/:category/:productId", component: Product },
 
+
 ];

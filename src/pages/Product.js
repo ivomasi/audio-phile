@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, Navigate } from "react-router-dom";
 
 import Layout from "../shared/Layout";
 import ProductCard from "../components/ProductCard/ProductCard";
@@ -13,14 +13,13 @@ import {down} from "styled-breakpoints"
 function Product() {
 	const { state } = useLocation();
 
-	console.log(state);
+	if (!state) return <Navigate to="/nomatch" />
+
+
 	const { brand, model, stock, sold, price, imagesUrl } = state.product;
 
-	const imgs = imagesUrl.map((element, i) => {
-		return { source: element };
-	});
 
-	console.log(brand, model);
+
 
 	return (
 		<Layout>

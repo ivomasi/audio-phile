@@ -6,6 +6,7 @@ const ICON_SIZE = {
     sm: "2rem",
     m: "3.5rem",
     lg: "5rem",
+    full: "100%"
 }
 
 function Svg({url, alt, size = "m", onClick}) {
