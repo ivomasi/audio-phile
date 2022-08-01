@@ -1,53 +1,47 @@
 import React, { useEffect, useState } from "react";
+
+
 import styled from "styled-components";
-import {down} from "styled-breakpoints"
 import colors from "../../../styled-system/colors";
+
+
 import Button from "../../Button/Button";
+import { Link } from "react-router-dom";
 
 function ProductGridItem({ product }) {
-	const [loading, setLoading] = useState(false);
-	const [item, setItem] = useState({});
 
-	useEffect(() => {
-		setLoading((prevLoad) => !prevLoad);
-
-		setItem(product);
-
-		setLoading((prevLoad) => !prevLoad);
-
-		console.log(product);
-	}, [product]);
 
 	return (
-		!loading && (
-			<ItemWrapper>
-				<ItemImageWrap>
-					<ItemImage src={item.previewImage} />
-				</ItemImageWrap>
+		<ItemWrapper>
+				<Link to={{pathname: `/${product.category.toLowerCase()}/${product.id}`}} state={{product}}style={{textDecoration: "none", color: "inherit"}}>
+					<ItemImageWrap>
+						<ItemImage src={product.previewImage} />
+					</ItemImageWrap>
 
-				<ItemBio>
-					<h3 style={{ color: item.discount ? colors.secondaryColor : colors.primaryColor }}>
-						{item.price} €{item.discount ? <span>{Math.ceil(item.price + item.price * 0.1)} €</span> : null}
-					</h3>
+					<ItemBio>
+						<h3 style={{ color: product.discount ? colors.secondaryColor : colors.primaryColor }}>
+							{product.price} €{product.discount ? <span>{Math.ceil(product.price + product.price * 0.1)} €</span> : null}
+						</h3>
 
-					<p>
-						<b>{item.model}</b>
-					</p>
-					<p>{item.brand}</p>
-				</ItemBio>
+						<p>
+							<b>{product.model}</b>
+						</p>
+						<p>{product.brand}</p>
+					</ItemBio>
+				</Link>
 
 				<ItemAction>
-					<Button text="Add to cart" rounded size="lg" width="100%" primary/>
+					<Button text="Add to cart" rounded size="lg" width="100%" primary />
 					<Button text="Quick view" rounded complementary size="lg" width="100%" />
 				</ItemAction>
 			</ItemWrapper>
-		)
 	);
 }
 
 const ItemWrapper = styled.div`
-	display: grid;
-	grid-template-rows: 2fr 2fr 1fr;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	border: 1px solid ${colors.lightGrey};
 	padding: 1rem;
 	background-color: ${colors.white};
@@ -60,7 +54,6 @@ const ItemBio = styled.div`
 	justify-content: flex-start;
 	overflow: hidden;
 
-
 	h3 {
 		position: relative;
 		margin: 2rem 0;
@@ -71,7 +64,6 @@ const ItemBio = styled.div`
 			color: ${colors.darkGrey};
 			text-decoration: line-through;
 			right: 5rem;
-
 		}
 	}
 
@@ -82,8 +74,7 @@ const ItemBio = styled.div`
 		text-overflow: ellipsis;
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
-	font-weight: 400;
-
+		font-weight: 400;
 	}
 `;
 
