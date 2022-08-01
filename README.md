@@ -1,4 +1,4 @@
-e-store for headphones, speakers and mix pults only
+e-store for headphones, speakers and mix pults (or any other after right data)
 
 
 - React
