@@ -4,10 +4,10 @@ e-store for headphones, speakers and mix pults only
 - React
 - Redux
 - Firebase
-- components library MIU
+- styled components
 
  goal: learn [
-            MIU,
+             styled components,
             integrate firebase,
             auth,
             payments
