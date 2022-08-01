@@ -5,9 +5,9 @@ import colors from "../../styled-system/colors.js";
 import {flexCenter} from "../../shared/styles/common.js"
 
 
-function Button({ type = "button", text, onClick, size="m", primary = false, rounded = false, width, complementary}) {
+function Button({ type = "button", text, onClick, size="m", primary = false, rounded = false, width, complementary, ...rest}) {
 	return (
-		<Btn type={type} onClick={onClick} size={size} primary={primary} rounded={rounded} width={width} complementary={complementary} >
+		<Btn type={type} onClick={onClick} size={size} primary={primary} rounded={rounded} width={width} complementary={complementary} {...rest} >
 			{text}
 		</Btn>
 	);
@@ -31,7 +31,7 @@ const Btn = styled.button`
     text-transform: capitalize;
     font-weight: 600;
 	cursor: pointer;
-    background-color: ${(props) => props.primary ? colors.primaryColor : props.complementary ? colors.white : colors.secondaryColor};
+    background-color: ${(props) => props.primary ? colors.primaryColor : props.complementary ? colors.white : props.disabled ? colors.grey : colors.secondaryColor};
 
 	:hover {
 		opacity: .8;
