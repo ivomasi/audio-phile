@@ -13,4 +13,6 @@ const getCollection = async (collectionName) => {
     return documents
 }
 
-export default getCollection
+
+
+export  default getCollection
