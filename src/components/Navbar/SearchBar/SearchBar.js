@@ -48,7 +48,7 @@ function SearchBar() {
 			{window.innerWidth > 809 && <SearchCat name="categories" value={selectValue} onChange={handleCatChange}>
 				<option value="all">all categories</option>
 				{routing.map((route, i) => {
-					return route.name !== "home" &&  (
+					return route.name !== "home" && route.name !== "product" &&  (
 						<option key={i} value={route.name}>
 						{route.name}
 						</option>

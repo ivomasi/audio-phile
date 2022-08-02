@@ -45,7 +45,7 @@ function Headphones() {
 
 	return (
 		<Layout>
-			{loading && <Spinner style={{pos}} loading={loading} />}
+			{loading && <Spinner loading={loading} />}
 			{items && <ProductGrid products={items} />}
 			<Button primary size="lg" onClick={() => fetchWithPagination("headphones")} />
 		</Layout>
