@@ -10,7 +10,6 @@ function Carousel({ images }) {
 
 	
 
-	console.log(images);
 	return (
 		<CarouselWrapper>
             <RespCarousel>

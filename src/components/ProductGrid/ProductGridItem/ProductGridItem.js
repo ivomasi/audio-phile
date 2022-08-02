@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 
 import styled from "styled-components";
@@ -20,7 +20,7 @@ function ProductGridItem({ product }) {
 
 					<ItemBio>
 						<h3 style={{ color: product.discount ? colors.secondaryColor : colors.primaryColor }}>
-							{product.price} €{product.discount ? <span>{Math.ceil(product.price + product.price * 0.1)} €</span> : null}
+							{product.price} €{product.discount ? <span>{parseFloat(Math.ceil( product.price * 0.1))} €</span> : null}
 						</h3>
 
 						<p>

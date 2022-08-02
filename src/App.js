@@ -7,7 +7,7 @@ import GlobalStyle from "./shared/styles/globalStyles";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { routing } from "./routing/routing";
 
-//page
+//pages
 import NoMatch from "./pages/NoMatch";
 
 function App() {

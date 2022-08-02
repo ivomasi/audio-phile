@@ -24,7 +24,7 @@ function Product() {
 	return (
 		<Layout>
 			<ProductLayout>
-				<ProductView  images={imagesUrl} brand={brand} sold={sold} price={price} model={model} />
+				<ProductView  images={imagesUrl} brand={brand} sold={sold} price={price} model={model} stock={stock}/>
 				
 			</ProductLayout>
 		</Layout>

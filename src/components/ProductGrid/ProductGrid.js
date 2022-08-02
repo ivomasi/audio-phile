@@ -5,16 +5,16 @@ import colors from "../../styled-system/colors";
 import { down } from "styled-breakpoints";
 
 import ProductGridItem from "./ProductGridItem/ProductGridItem";
+import Spinner from "../Spinner/Spinner";
 
-function ProductGrid({ products }) {
+function ProductGrid({  products }) {
 	return (
-		products && (
-			<Grid>
-				{products.map((item, index) => {
+		<Grid>
+			{products &&
+				products.map((item, index) => {
 					return <ProductGridItem key={index} product={item}></ProductGridItem>;
 				})}
-			</Grid>
-		)
+		</Grid>
 	);
 }
 
