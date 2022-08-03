@@ -87,8 +87,8 @@ const ItemAction = styled.div`
 const ItemImage = styled.img`
 	display: block;
 	width: 100%;
-	height: auto;
-	aspect-ratio: 16/12;
+	height: 15rem;
+	object-fit: cover;
 `;
 
 const ItemImageWrap = styled.div``;
