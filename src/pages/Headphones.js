@@ -32,7 +32,12 @@ function Headphones() {
 	async function fetchWithPagination(collectionName) {
 		const collectionRef = collection(db, collectionName);
 
-    const firstQuery = query(collectionRef, orderBy("price", "asc"), startAfter(lastDocumentRef || 0) , limit(8));
+		let firstQuery;
+		if (type === "more") {
+			firstQuery = query(collectionRef, orderBy("price", "asc"), startAfter(lastDocumentRef || 0), limit(8));
+		} else {
+			firstQuery = query(collectionRef, orderBy("price", "asc"), endAt(lastDocumentRef || 0), limit(8));
+		}
 		const documentSnapshots = await getDocs(firstQuery);
 
 		const documents = documentSnapshots.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
