@@ -5,9 +5,9 @@ import colors from "../../styled-system/colors.js";
 import {flexCenter} from "../../shared/styles/common.js"
 
 
-function Button({ type = "button", text, onClick, size="m", primary = false, rounded = false, width }) {
+function Button({ type = "button", text, onClick, size="m", primary = false, rounded = false, width, complementary, ...rest}) {
 	return (
-		<Btn type={type} onClick={onClick} size={size} primary={primary} rounded={rounded} width={width}>
+		<Btn type={type} onClick={onClick} size={size} primary={primary} rounded={rounded} width={width} complementary={complementary} {...rest} >
 			{text}
 		</Btn>
 	);
@@ -25,18 +25,20 @@ const Btn = styled.button`
 	line-height: ${(props) => BUTTON_SIZE[props.size]};
 	border-radius: ${(props) => props.rounded ? "5px" : "0"};
 	padding: 1rem 2rem;
-    border: none;
+    border: ${(props) => props.complementary ? `1px solid ${colors.primaryColor}` : "none"};
 	width: ${(props) => props.width};
-    color: ${colors.white};
+    color: ${(props) => props.complementary ? colors.primaryColor : colors.white};
     text-transform: capitalize;
     font-weight: 600;
 	cursor: pointer;
-    background-color: ${(props) => props.primary ? colors.primaryColor : colors.secondaryColor};
+    background-color: ${(props) => props.primary ? colors.primaryColor : props.complementary ? colors.white : props.disabled ? colors.grey : colors.secondaryColor};
 
 	:hover {
-		opacity: .7;
+		opacity: .8;
 		transition: opacity .2s ease-in;
 	}
+
+	
 `;
 
 export default Button;

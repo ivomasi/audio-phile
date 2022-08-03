@@ -1,7 +1,7 @@
 
 
 //firebase
-import { getDocs, collection } from 'firebase/firestore';
+import { getDocs, collection, query, orderBy, limit, startAfter} from 'firebase/firestore';
 import { db } from "../../firebase.js";
 
 
@@ -11,6 +11,11 @@ const getCollection = async (collectionName) => {
 
     const documents = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
     return documents
+    
+
+
 }
 
-export default getCollection
+
+
+export  default getCollection

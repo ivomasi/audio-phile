@@ -1,34 +1,55 @@
-import React,{ useState, useEffect} from 'react'
+import React, { useState, useEffect } from "react";
 
-//help
-import getCollection from '../hooks/getCollection/getCollection';
 
 //comps
-import ProductGrid from '../components/ProductGrid/ProductGrid'
-import Layout from '../shared/Layout'
+import ProductGrid from "../components/ProductGrid/ProductGrid";
+import Layout from "../shared/Layout";
+import Spinner from "../components/Spinner/Spinner";
+
+import { db } from "../firebase.js";
+import { getDocs, collection, query, orderBy, limit, startAfter } from "firebase/firestore";
+import Button from "../components/Button/Button";
 
 function Headphones() {
-  const [items, setItems] = useState(null);
+	const [items, setItems] = useState(null);
+	const [loading, setLoading] = useState(false);
+	const [lastDocumentRef, setLastDocumentRef] = useState();
 
 	useEffect(() => {
-		const setData = async () => {
 
-      try {
-        const data = await getCollection("headphones");
-			  setItems(data);
-      } catch (error) {
-        console.error(error);
-      }
+    try {
+      setLoading(true);
+      
+      fetchWithPagination("headphones")
+      
+      setLoading(false);
+      
+    } catch (error) {
+      console.log(error)
+    }
+	}, []);
 
-			
-		};
+	async function fetchWithPagination(collectionName) {
+		const collectionRef = collection(db, collectionName);
 
-		setData();
-	},[]);
-  return (<Layout>
-    {items && <ProductGrid products={items}/>}
-  </Layout>
-  )
+    const firstQuery = query(collectionRef, orderBy("price", "asc"), startAfter(lastDocumentRef || 0) , limit(8));
+		const documentSnapshots = await getDocs(firstQuery);
+
+		const documents = documentSnapshots.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+
+		const lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1];
+
+		setLastDocumentRef(lastVisible);
+		setItems(documents);
+	}
+
+	return (
+		<Layout>
+			{loading && <Spinner loading={loading} />}
+			{items && <ProductGrid products={items} />}
+			<Button primary size="lg" onClick={() => fetchWithPagination("headphones")} />
+		</Layout>
+	);
 }
 
-export default Headphones
+export default Headphones;

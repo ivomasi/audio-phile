@@ -28,10 +28,3 @@ const firebaseConfig = {
 
  export const db = getFirestore(app)
 
-// Get a list of cities from your database
-/* async function getHeadphones(db) {
-  const headphonesCol = collection(db, 'headphones');
-  const headphonesSnapshot = await getDocs(headphonesCol);
-  const headphoneList = headphonesSnapshot.docs.map(doc => doc.data());
-  return headphoneList;
-} */

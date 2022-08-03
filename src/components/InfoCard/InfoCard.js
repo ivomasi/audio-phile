@@ -5,9 +5,9 @@ import styled from "styled-components";
 
 import colors from "../../styled-system/colors";
 
-function InfoCard({ IconComponent, title, text }) {
+function InfoCard({ IconComponent, title, text, size }) {
 	return (
-		<Card>
+		<Card size={size}>
 			<div className="sector">{IconComponent}</div>
 			<div className="sector">
 				<h2>{title}</h2>
@@ -21,10 +21,12 @@ const Card = styled.div`
 	display: flex;
 	flex-direction: column;
 	padding: 2rem 1rem;
-    min-height: 20rem;
+    min-height: ${(props) => !props.size ? "0rem" : "20rem"};
     justify-content: space-between;
     background-color: ${colors.white};
     border-radius: 5px;
+    text-align: center;
+    gap: .75rem;
 
     svg {
         width: 100px;
