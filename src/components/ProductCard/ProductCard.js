@@ -53,7 +53,7 @@ const Card = styled.div`
 	justify-content: space-around;
 	align-items: flex-start;
 	max-height: 80vh;
-	flex-basis: 33%;
+	flex: 1;
 	position: sticky;
 	align-self: stretch;
 	top: 25px;

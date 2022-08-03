@@ -2,13 +2,15 @@ import React from "react";
 
 import { useLocation, Navigate } from "react-router-dom";
 
-import Layout from "../shared/Layout";
 
 
 import styled from "styled-components";
 import {down} from "styled-breakpoints"
-import ProductView from "../components/ProductView/ProductView";
 
+import Layout from "../shared/Layout";
+import ProductView from "../components/ProductView/ProductView";
+import Description from "../components/Description/Description";
+import ProductCard from "../components/ProductCard/ProductCard";
 
 function Product() {
 	const { state } = useLocation();
@@ -16,7 +18,7 @@ function Product() {
 	if (!state) return <Navigate to="/nomatch" />
 
 
-	const { brand, model, stock, sold, price, imagesUrl } = state.product;
+	const { brand, model, stock, sold, price } = state.product;
 
 
 
@@ -24,8 +26,8 @@ function Product() {
 	return (
 		<Layout>
 			<ProductLayout>
-				<ProductView  images={imagesUrl} brand={brand} sold={sold} price={price} model={model} stock={stock}/>
-				
+				<Description {...state.product}/>
+				<ProductCard brand={brand} sold={sold} price={price} model={model} stock={stock} />
 			</ProductLayout>
 		</Layout>
 	);
@@ -33,11 +35,11 @@ function Product() {
 
 const ProductLayout = styled.section`
 	display: flex;
-	justify-content: flex-start;
+	flex-direction: row;
+	justify-content: stretch;
 	padding: 2rem 5rem;
 	gap: 1rem;
 
-	margin-bottom: 100vh;
 	${down("lg")} {
 		flex-direction: column;
 		padding: 1rem;
